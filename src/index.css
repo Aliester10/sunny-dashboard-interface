@@ -11,6 +11,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Quartz MS';
+  src: url('https://db.onlinewebfonts.com/t/3e4be8d7baae7282374882eec40562bd.woff2') format('woff2'),
+       url('https://db.onlinewebfonts.com/t/3e4be8d7baae7282374882eec40562bd.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -106,7 +115,7 @@
 
 @layer components {
   .lcd-display {
-    @apply font-lcd text-3xl md:text-4xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-md px-4 py-2 shadow-inner;
+    @apply font-['Quartz_MS','Digital-7',monospace] text-3xl md:text-4xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-md px-4 py-2 shadow-inner;
   }
   
   .sensor-card {

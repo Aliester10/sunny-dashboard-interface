@@ -90,6 +90,11 @@ const Index = () => {
               <SolarIcon />
             </div>
             <SensorDisplay data={sensorData} compact={true} />
+            <PowerGenerationCard power={sensorData.power} />
+            <BatteryStatus 
+              level={Math.round(sensorData.batteryCapacity)} 
+              isCharging={sensorData.lightIntensity > 300} 
+            />
           </>
         ) : (
           <div className="space-y-8">

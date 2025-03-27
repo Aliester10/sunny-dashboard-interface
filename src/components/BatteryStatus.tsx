@@ -2,6 +2,7 @@
 import React from 'react';
 import { Card } from '@/components/ui/card';
 import { Battery, BatteryCharging, BatteryMedium, BatteryLow, BatteryWarning } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface BatteryStatusProps {
   level: number;
@@ -9,6 +10,8 @@ interface BatteryStatusProps {
 }
 
 const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
+  const isMobile = useIsMobile();
+  
   const getBatteryIcon = () => {
     if (isCharging) return BatteryCharging;
     if (level > 70) return Battery;
@@ -34,6 +37,40 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
     return 'Critical';
   };
 
+  if (isMobile) {
+    return (
+      <div className="bg-white rounded-xl p-4 shadow-md animate-fade-in mt-4">
+        <div className="flex items-center justify-between mb-2">
+          <h3 className="text-base font-medium">Battery Status</h3>
+          <BatteryIcon className={`h-4 w-4 ${getStatusColor()}`} />
+        </div>
+        
+        <div className="bg-solar-cardBg rounded-lg p-3 flex justify-between items-center">
+          <div className="flex items-center">
+            <BatteryIcon className={`h-6 w-6 ${getStatusColor()} mr-2`} />
+            <div className="font-['Quartz_MS', 'Digital-7', monospace] text-2xl tracking-wider text-solar-displayText">{level}</div>
+            <div className="text-xs text-gray-500 self-end mb-1">%</div>
+          </div>
+          <div className="text-xs px-2 py-1 rounded-full bg-gray-100">
+            {getBatteryStatus()}
+          </div>
+        </div>
+        
+        <div className="mt-2 h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div 
+            className={`h-full ${
+              level > 70 ? 'bg-green-500' : 
+              level > 40 ? 'bg-yellow-500' : 
+              level > 15 ? 'bg-orange-500' : 
+              'bg-red-500'
+            } transition-all duration-500 ease-in-out`}
+            style={{ width: `${level}%` }}
+          ></div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Card className="p-4 animate-fade-in">
       <h3 className="text-lg font-medium mb-4">Battery Status</h3>
@@ -47,7 +84,7 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
         </div>
         <div className="text-right">
           <p className="text-sm text-gray-500">Level</p>
-          <p className="font-lcd text-3xl tracking-wider">{level}%</p>
+          <p className="font-['Quartz_MS', 'Digital-7', monospace] text-3xl tracking-wider">{level}%</p>
         </div>
       </div>
       
