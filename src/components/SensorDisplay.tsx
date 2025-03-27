@@ -52,7 +52,7 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
           {sensorCards.slice(0, 4).map((sensor, index) => (
             <div key={index} className="bg-solar-cardBg rounded-lg p-3 flex items-center space-x-2">
               <sensor.icon className="text-solar-primary w-5 h-5" />
-              <div className="font-['Quartz_MS', 'Digital-7', monospace] text-2xl tracking-wider text-solar-displayText">{sensor.value}</div>
+              <div className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-2xl tracking-wider text-solar-displayText">{sensor.value}</div>
               <div className="text-xs text-gray-500 self-end mb-1">{sensor.unit}</div>
             </div>
           ))}
@@ -80,7 +80,7 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
             <div className="flex flex-col">
               <span className="text-sm text-gray-500">{sensor.label}</span>
               <div className="flex items-baseline">
-                <div className="font-['Quartz_MS', 'Digital-7', monospace] text-3xl tracking-wider text-solar-displayText">{sensor.value}</div>
+                <div className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-3xl tracking-wider text-solar-displayText">{sensor.value}</div>
                 <span className="text-xs text-gray-500 ml-1">{sensor.unit}</span>
               </div>
             </div>

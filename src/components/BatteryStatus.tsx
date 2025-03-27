@@ -48,7 +48,7 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
         <div className="bg-solar-cardBg rounded-lg p-3 flex justify-between items-center">
           <div className="flex items-center">
             <BatteryIcon className={`h-6 w-6 ${getStatusColor()} mr-2`} />
-            <div className="font-['Quartz_MS', 'Digital-7', monospace] text-2xl tracking-wider text-solar-displayText">{level}</div>
+            <div className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-2xl tracking-wider text-solar-displayText">{level}</div>
             <div className="text-xs text-gray-500 self-end mb-1">%</div>
           </div>
           <div className="text-xs px-2 py-1 rounded-full bg-gray-100">
@@ -84,7 +84,7 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
         </div>
         <div className="text-right">
           <p className="text-sm text-gray-500">Level</p>
-          <p className="font-['Quartz_MS', 'Digital-7', monospace] text-3xl tracking-wider">{level}%</p>
+          <p className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-3xl tracking-wider">{level}%</p>
         </div>
       </div>
       
