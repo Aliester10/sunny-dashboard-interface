@@ -1,0 +1,40 @@
+
+import React from 'react';
+import { Card } from '@/components/ui/card';
+import { Zap } from 'lucide-react';
+
+interface PowerGenerationCardProps {
+  power: number;
+}
+
+const PowerGenerationCard: React.FC<PowerGenerationCardProps> = ({ power }) => {
+  return (
+    <Card className="p-6 h-full animate-fade-in">
+      <div className="flex items-center justify-between mb-4">
+        <h3 className="text-xl font-medium">Power Generation</h3>
+        <Zap className="text-solar-primary w-6 h-6" />
+      </div>
+      
+      <div className="flex items-center justify-center mt-4">
+        <div className="font-lcd text-7xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-lg px-8 py-6 shadow-inner">
+          {Math.round(power)}
+        </div>
+        <span className="text-xl text-gray-500 ml-4">Watts</span>
+      </div>
+      
+      <div className="mt-6 text-sm text-gray-500">Real-time power generation from solar panels</div>
+      
+      <div className="mt-4 flex items-center justify-between">
+        <div className="text-sm">
+          <span className="font-medium text-solar-primary">Status:</span> Producing
+        </div>
+        <div className="flex items-center">
+          <div className="h-2.5 w-2.5 rounded-full bg-green-500 animate-pulse-slow mr-2"></div>
+          <span className="text-sm">Active</span>
+        </div>
+      </div>
+    </Card>
+  );
+};
+
+export default PowerGenerationCard;

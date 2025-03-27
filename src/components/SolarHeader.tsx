@@ -1,12 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Settings, SunIcon } from 'lucide-react';
+import { SunIcon } from 'lucide-react';
 
-interface SolarHeaderProps {
-  toggleMenu?: () => void;
-}
-
-const SolarHeader: React.FC<SolarHeaderProps> = ({ toggleMenu }) => {
+const SolarHeader: React.FC = () => {
   const [greeting, setGreeting] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [currentDate, setCurrentDate] = useState('');
@@ -52,12 +48,13 @@ const SolarHeader: React.FC<SolarHeaderProps> = ({ toggleMenu }) => {
   }, []);
 
   return (
-    <header className="p-4 flex justify-between items-center animate-fade-in">
-      <div className="flex items-center space-x-2">
-        <button className="text-solar-primary font-medium">Cal.</button>
+    <header className="p-4 md:p-6 flex justify-between items-center animate-fade-in border-b border-gray-100">
+      <div className="hidden md:block">
+        <h2 className="text-lg font-medium text-gray-800">{greeting}</h2>
+        <p className="text-sm text-gray-500">{currentDate}</p>
       </div>
       
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center mx-auto md:mx-0">
         <div className="flex items-center space-x-2">
           <SunIcon className="h-6 w-6 text-solar-primary" />
           <h1 className="text-lg font-semibold text-gray-700">Smart Solar Tracker</h1>
@@ -65,12 +62,10 @@ const SolarHeader: React.FC<SolarHeaderProps> = ({ toggleMenu }) => {
         <div className="text-xs text-gray-500">v1.3 By SolarTech</div>
       </div>
       
-      <button 
-        onClick={toggleMenu} 
-        className="p-2 rounded-full hover:bg-gray-100 transition-colors"
-      >
-        <Settings className="h-5 w-5 text-gray-600" />
-      </button>
+      <div className="hidden md:block text-right">
+        <div className="text-lg font-medium text-gray-800">{currentTime}</div>
+        <div className="text-xs text-gray-500">Western Indonesia Time</div>
+      </div>
     </header>
   );
 };

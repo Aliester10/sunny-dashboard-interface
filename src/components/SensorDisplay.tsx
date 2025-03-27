@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Thermometer, Battery, Sun, Zap, Gauge } from 'lucide-react';
+import { Card } from '@/components/ui/card';
 
 export interface SensorData {
   temperature: number;
@@ -37,22 +38,10 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
       label: 'Panel Current' 
     },
     { 
-      icon: Zap, 
-      value: Math.round(data.power).toString(), 
-      unit: 'W', 
-      label: 'Generated Power' 
-    },
-    { 
       icon: Sun, 
       value: Math.round(data.lightIntensity).toString(), 
       unit: 'LUX', 
       label: 'Light Intensity' 
-    },
-    { 
-      icon: Battery, 
-      value: Math.round(data.batteryCapacity).toString(), 
-      unit: '%', 
-      label: 'Battery Capacity' 
     }
   ];
 
@@ -77,16 +66,22 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
   }
 
   return (
-    <div className="animate-fade-in">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <Card className="p-6 animate-fade-in">
+      <div className="flex items-center justify-between mb-6">
+        <h3 className="text-xl font-medium">Sensor Data</h3>
+        <Zap className="text-solar-primary w-5 h-5" />
+      </div>
+      <div className="grid grid-cols-2 gap-6">
         {sensorCards.map((sensor, index) => (
-          <div key={index} className="sensor-card">
-            <sensor.icon className="sensor-icon" />
+          <div key={index} className="sensor-card flex items-center space-x-4 p-4">
+            <div className="bg-solar-primary/10 p-2 rounded-full">
+              <sensor.icon className="sensor-icon" />
+            </div>
             <div className="flex flex-col">
-              <span className="text-xs text-gray-500">{sensor.label}</span>
+              <span className="text-sm text-gray-500">{sensor.label}</span>
               <div className="flex items-baseline">
-                <div className="sensor-value">{sensor.value}</div>
-                <span className="sensor-unit">{sensor.unit}</span>
+                <div className="font-lcd text-3xl tracking-wider text-solar-displayText">{sensor.value}</div>
+                <span className="text-xs text-gray-500 ml-1">{sensor.unit}</span>
               </div>
             </div>
           </div>
@@ -96,7 +91,7 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
         <Zap className="w-5 h-5 mr-2" />
         <span className="text-sm font-medium">Realtime Monitoring</span>
       </div>
-    </div>
+    </Card>
   );
 };
 
