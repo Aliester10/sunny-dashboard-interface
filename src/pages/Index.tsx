@@ -86,8 +86,8 @@ const Index = () => {
       <main className="p-4 md:p-6 max-w-7xl mx-auto">
         {isMobile ? (
           <>
-            <div className="flex justify-center my-8">
-              <SolarIcon />
+            <div className="flex justify-center my-6">
+              <SolarIcon className="w-36 h-36 text-solar-primary" />
             </div>
             <SensorDisplay data={sensorData} compact={true} />
             <PowerGenerationCard power={sensorData.power} />
@@ -98,6 +98,9 @@ const Index = () => {
           </>
         ) : (
           <div className="space-y-8">
+            <div className="flex justify-center my-4">
+              <SolarIcon className="w-40 h-40 text-solar-primary" />
+            </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="col-span-1 lg:col-span-2">
                 <PowerGenerationCard power={sensorData.power} />
