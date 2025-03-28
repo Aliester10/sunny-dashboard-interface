@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Zap } from "lucide-react";
@@ -35,30 +36,16 @@ const PowerGenerationCard: React.FC<PowerGenerationCardProps> = ({ power }) => {
         <h3 className="text-xl font-medium">Power Generation</h3>
         <Zap className="text-solar-primary w-6 h-6" />
       </div>
-<<<<<<< HEAD
-
-      <div className="flex items-center justify-center mt-4">
-        <div className="font-['Quartz_MS_Std','Digital-7',monospace] text-7xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-lg px-8 py-6 shadow-inner">
-=======
       
       <div className="flex flex-col items-center justify-center mt-8 mb-8">
         <div className="font-['Quartz_MS_Std','Digital-7',monospace] text-8xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-lg px-10 py-8 shadow-inner">
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
           {Math.round(power)}
         </div>
         <span className="text-2xl text-gray-500 mt-4">Watts</span>
       </div>
-<<<<<<< HEAD
-
-      <div className="mt-6 text-sm text-gray-500">
-        Real-time power generation from solar panels
-      </div>
-
-=======
       
       <div className="mt-6 text-sm text-gray-500 text-center">Real-time power generation from solar panels</div>
       
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
       <div className="mt-4 flex items-center justify-between">
         <div className="text-sm">
           <span className="font-medium text-solar-primary">Status:</span>{" "}

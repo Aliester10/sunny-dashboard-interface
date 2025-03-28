@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Card } from "@/components/ui/card";
 import {
@@ -82,30 +83,6 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
   }
 
   return (
-<<<<<<< HEAD
-    <Card className="p-4 animate-fade-in">
-      <h3 className="text-lg font-medium mb-4">Battery Status</h3>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <BatteryIcon className={`h-8 w-8 ${getStatusColor()}`} />
-          <div className="ml-4">
-            <p className="text-sm text-gray-500">Status</p>
-            <p className={`font-medium ${getStatusColor()}`}>
-              {getBatteryStatus()}
-            </p>
-          </div>
-        </div>
-        <div className="text-right">
-          <p className="text-sm text-gray-500">Level</p>
-          <p className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-3xl tracking-wider">
-            {level}%
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-4 h-4 bg-gray-200 rounded-full overflow-hidden">
-        <div
-=======
     <Card className="p-6 animate-fade-in h-full flex flex-col justify-between">
       <h3 className="text-xl font-medium mb-6">Battery Status</h3>
       
@@ -117,7 +94,6 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
       
       <div className="mt-4 h-6 bg-gray-200 rounded-full overflow-hidden">
         <div 
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
           className={`h-full ${
             level > 70
               ? "bg-green-500"
@@ -130,13 +106,8 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
           style={{ width: `${level}%` }}
         ></div>
       </div>
-<<<<<<< HEAD
-
-      <div className="mt-4 text-xs text-gray-500">
-=======
       
       <div className="mt-6 text-sm text-gray-500 flex items-center justify-center">
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
         {isCharging ? (
           <div className="flex items-center">
             <div className="h-2 w-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
