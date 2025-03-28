@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 
 const SolarHeader: React.FC = () => {
   const [greeting, setGreeting] = useState('');
