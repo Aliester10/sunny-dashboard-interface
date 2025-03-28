@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import { SunIcon } from "lucide-react";
-=======
 
 import React, { useState, useEffect } from 'react';
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
+import { SunIcon } from "lucide-react";
 
 const SolarHeader: React.FC = () => {
   const [greeting, setGreeting] = useState("");
@@ -60,14 +56,6 @@ const SolarHeader: React.FC = () => {
 
       <div className="flex flex-col items-center mx-auto md:mx-0">
         <div className="flex items-center space-x-2">
-<<<<<<< HEAD
-          <SunIcon className="h-6 w-6 text-solar-primary" />
-          <h1 className="text-lg font-semibold text-gray-700">
-            Smart Solar Tracker
-          </h1>
-        </div>
-        <div className="text-xs text-gray-500">powered By Umalo</div>
-=======
           <img 
             src="/lovable-uploads/7b1140d8-b2c5-4b3c-89da-49cd5e78467f.png" 
             alt="Umalo Logo" 
@@ -75,8 +63,7 @@ const SolarHeader: React.FC = () => {
           />
           <h1 className="text-lg font-semibold text-gray-700">Smart Solar Tracker</h1>
         </div>
-        <div className="text-xs text-gray-500">Power By Umalo</div>
->>>>>>> d7be7b61b93627c8deefbc6c879ad470dd32ae40
+        <div className="text-xs text-gray-500">Powered By Umalo</div>
       </div>
 
       <div className="hidden md:block text-right">
