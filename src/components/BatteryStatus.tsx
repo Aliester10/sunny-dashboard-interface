@@ -72,23 +72,16 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
   }
 
   return (
-    <Card className="p-4 animate-fade-in">
-      <h3 className="text-lg font-medium mb-4">Battery Status</h3>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center">
-          <BatteryIcon className={`h-8 w-8 ${getStatusColor()}`} />
-          <div className="ml-4">
-            <p className="text-sm text-gray-500">Status</p>
-            <p className={`font-medium ${getStatusColor()}`}>{getBatteryStatus()}</p>
-          </div>
-        </div>
-        <div className="text-right">
-          <p className="text-sm text-gray-500">Level</p>
-          <p className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-3xl tracking-wider">{level}%</p>
-        </div>
+    <Card className="p-6 animate-fade-in h-full flex flex-col justify-between">
+      <h3 className="text-xl font-medium mb-6">Battery Status</h3>
+      
+      <div className="flex flex-col items-center justify-center mb-4">
+        <BatteryIcon className={`h-20 w-20 ${getStatusColor()} mb-4`} />
+        <div className="font-['Quartz_MS_Std', 'Digital-7', monospace] text-5xl tracking-wider">{level}%</div>
+        <p className={`text-lg font-medium ${getStatusColor()} mt-2`}>{getBatteryStatus()}</p>
       </div>
       
-      <div className="mt-4 h-4 bg-gray-200 rounded-full overflow-hidden">
+      <div className="mt-4 h-6 bg-gray-200 rounded-full overflow-hidden">
         <div 
           className={`h-full ${
             level > 70 ? 'bg-green-500' : 
@@ -100,10 +93,10 @@ const BatteryStatus: React.FC<BatteryStatusProps> = ({ level, isCharging }) => {
         ></div>
       </div>
       
-      <div className="mt-4 text-xs text-gray-500">
+      <div className="mt-6 text-sm text-gray-500 flex items-center justify-center">
         {isCharging ? (
           <div className="flex items-center">
-            <div className="h-2 w-2 bg-green-500 rounded-full mr-2"></div>
+            <div className="h-2 w-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
             <span>Currently charging from solar panel</span>
           </div>
         ) : (

@@ -4,49 +4,9 @@ import SolarHeader from '@/components/SolarHeader';
 import StatusIndicator from '@/components/StatusIndicator';
 import SensorDisplay, { SensorData } from '@/components/SensorDisplay';
 import BatteryStatus from '@/components/BatteryStatus';
-import LogTable from '@/components/LogTable';
 import SolarIcon from '@/components/SolarIcon';
 import PowerGenerationCard from '@/components/PowerGenerationCard';
 import { useIsMobile } from '@/hooks/use-mobile';
-
-// Sample log data
-const sampleLogs = [
-  {
-    timestamp: '08:32:14',
-    event: 'System Boot',
-    type: 'info' as const
-  },
-  {
-    timestamp: '09:15:22',
-    event: 'Maximum Power Reached',
-    type: 'success' as const,
-    value: '245W'
-  },
-  {
-    timestamp: '12:45:01',
-    event: 'Battery Low',
-    type: 'warning' as const,
-    value: '15%'
-  },
-  {
-    timestamp: '14:30:55',
-    event: 'Voltage Fluctuation',
-    type: 'warning' as const,
-    value: '28.3V'
-  },
-  {
-    timestamp: '16:03:12',
-    event: 'Temperature High',
-    type: 'error' as const,
-    value: '75°C'
-  },
-  {
-    timestamp: '17:22:34',
-    event: 'Light Intensity Peak',
-    type: 'info' as const,
-    value: '1254 LUX'
-  }
-];
 
 const Index = () => {
   const isMobile = useIsMobile();
@@ -101,6 +61,7 @@ const Index = () => {
             <div className="flex justify-center my-4">
               <SolarIcon className="w-40 h-40 text-solar-primary" />
             </div>
+            
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="col-span-1 lg:col-span-2">
                 <PowerGenerationCard power={sensorData.power} />
@@ -113,9 +74,8 @@ const Index = () => {
               </div>
             </div>
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6">
               <SensorDisplay data={sensorData} compact={false} />
-              <LogTable logs={sampleLogs} />
             </div>
           </div>
         )}
