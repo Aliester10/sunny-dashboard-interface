@@ -71,7 +71,7 @@ const SensorDisplay: React.FC<SensorDisplayProps> = ({ data, compact = true }) =
         <h3 className="text-xl font-medium">Sensor Data</h3>
         <Zap className="text-solar-primary w-5 h-5" />
       </div>
-      <div className="grid grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {sensorCards.map((sensor, index) => (
           <div key={index} className="sensor-card flex items-center space-x-4 p-4">
             <div className="bg-solar-primary/10 p-2 rounded-full">
