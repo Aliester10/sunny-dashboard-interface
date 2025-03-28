@@ -1,4 +1,3 @@
-
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -17,7 +16,10 @@ const NotFound = () => {
       <div className="text-center">
         <h1 className="text-4xl font-bold mb-4 text-solar-primary">404</h1>
         <p className="text-xl text-gray-600 mb-4">Oops! Page not found</p>
-        <a href="/" className="text-solar-primary hover:text-solar-secondary underline">
+        <a
+          href="/"
+          className="text-solar-primary hover:text-solar-secondary underline"
+        >
           Return to Dashboard
         </a>
       </div>
