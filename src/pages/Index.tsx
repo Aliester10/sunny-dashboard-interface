@@ -62,6 +62,12 @@ const Index = () => {
               <SolarIcon className="w-40 h-40 text-solar-primary" />
             </div>
             
+            {/* SensorDisplay now at the top */}
+            <div className="grid grid-cols-1 gap-6">
+              <SensorDisplay data={sensorData} compact={false} />
+            </div>
+            
+            {/* PowerGenerationCard and BatteryStatus below */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="col-span-1 lg:col-span-2">
                 <PowerGenerationCard power={sensorData.power} />
@@ -72,10 +78,6 @@ const Index = () => {
                   isCharging={sensorData.lightIntensity > 300} 
                 />
               </div>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-6">
-              <SensorDisplay data={sensorData} compact={false} />
             </div>
           </div>
         )}
