@@ -107,43 +107,45 @@
   }
 
   body {
-    @apply bg-solar-background text-solar-text antialiased;
+    @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+    /* Optional: add a subtle mesh gradient or radial gradient for background */
+    background-image: radial-gradient(circle at 50% -20%, #1e293b, #020617);
+    background-attachment: fixed;
   }
 }
 
 @layer components {
-  .lcd-display {
-    @apply font-['Quartz_MS_Std','Digital-7',monospace] text-3xl md:text-4xl tracking-wider text-solar-displayText bg-solar-cardBg rounded-md px-4 py-2 shadow-inner;
-  }
-  
-  .sensor-card {
-    @apply bg-white rounded-xl p-4 shadow-md transition-all hover:shadow-lg flex items-center space-x-3;
-  }
-  
-  .sensor-icon {
-    @apply text-solar-primary w-6 h-6;
-  }
-  
-  .sensor-value {
-    @apply lcd-display flex-1 text-right;
-  }
-  
-  .sensor-unit {
-    @apply text-xs text-gray-500 ml-1 self-end mb-1;
-  }
-  
-  .sidebar-link {
-    @apply flex items-center py-2 px-4 rounded-md transition-colors hover:bg-sidebar-accent text-sidebar-foreground hover:text-sidebar-primary;
-  }
-  
-  .sidebar-link.active {
-    @apply bg-sidebar-accent text-sidebar-primary;
+  /* We remove the lcd font and replace it with clean sans */
+  .metric-value {
+    @apply font-sans font-bold tracking-tighter;
   }
 }
 
 @layer utilities {
-  .glass-card {
-    @apply bg-white/90 backdrop-blur-sm border border-white/20 shadow-lg;
+  .glass-panel {
+    @apply bg-white/[0.03] backdrop-blur-xl border border-white/[0.08] shadow-2xl rounded-2xl transition-all duration-300;
+  }
+  .glass-panel:hover {
+    @apply bg-white/[0.06] border-white/[0.12];
+  }
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+  
+  /* Custom Scrollbar for logs */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05); 
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); 
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3); 
   }
 }

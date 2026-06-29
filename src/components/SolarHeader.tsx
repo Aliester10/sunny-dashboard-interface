@@ -1,74 +1,60 @@
-
 import React, { useState, useEffect } from 'react';
-import { SunIcon } from "lucide-react";
 
 const SolarHeader: React.FC = () => {
-  const [greeting, setGreeting] = useState("");
   const [currentTime, setCurrentTime] = useState("");
   const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const hours = now.getHours();
-
-      // Set greeting based on time of day
-      if (hours >= 5 && hours < 12) {
-        setGreeting("Good Morning!");
-      } else if (hours >= 12 && hours < 18) {
-        setGreeting("Good Afternoon!");
-      } else {
-        setGreeting("Good Evening!");
-      }
-
-      // Format time as HH:MM:SS
       const timeString = now.toLocaleTimeString("en-US", {
         hour12: false,
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
       });
-
-      // Format date as DD MMM YYYY
       const dateString = now.toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
         year: "numeric",
       });
-
       setCurrentTime(timeString);
       setCurrentDate(dateString);
     };
 
-    // Update immediately and then every second
     updateTime();
     const intervalId = setInterval(updateTime, 1000);
-
     return () => clearInterval(intervalId);
   }, []);
 
   return (
-    <header className="p-4 md:p-6 flex justify-between items-center animate-fade-in border-b border-gray-100">
-      <div className="hidden md:block">
-        <h2 className="text-lg font-medium text-gray-800">{greeting}</h2>
-        <p className="text-sm text-gray-500">{currentDate}</p>
-      </div>
-
-      <div className="flex flex-col items-center mx-auto md:mx-0">
-        <div className="flex items-center space-x-2">
+    <header className="bg-transparent relative z-20 w-full">
+      <div className="max-w-[1400px] mx-auto p-4 md:px-8 md:py-6 flex justify-between items-center w-full">
+        {/* Kiri: Logo */}
+        <div className="flex-1 flex justify-start items-center">
           <img 
             src="/lovable-uploads/7b1140d8-b2c5-4b3c-89da-49cd5e78467f.png" 
             alt="Umalo Logo" 
-            className="h-6 w-auto"
+            className="h-10 md:h-12 w-auto drop-shadow-md"
           />
-          <h1 className="text-lg font-semibold text-gray-700">Smart Solar Tracker</h1>
         </div>
-        <div className="text-xs text-gray-500">Powered By Umalo</div>
-      </div>
 
-      <div className="hidden md:block text-right">
-        <div className="text-lg font-medium text-gray-800">{currentTime}</div>
-        <div className="text-xs text-gray-500">Western Indonesia Time</div>
+        {/* Tengah: Judul */}
+        <div className="flex-1 flex flex-col items-center justify-center">
+          <h1 className="text-xl md:text-2xl font-bold tracking-tight text-white drop-shadow-sm whitespace-nowrap">Solar Dashboard</h1>
+          <div className="hidden md:block text-[11px] text-slate-400 mt-1 uppercase tracking-widest font-medium whitespace-nowrap">Monitoring System • Powered By Umalo</div>
+        </div>
+
+        {/* Kanan: Jam dan Tanggal */}
+        <div className="flex-1 hidden sm:flex flex-col items-end justify-center">
+          <div 
+            className="text-2xl md:text-3xl font-bold tracking-tight text-white whitespace-nowrap text-glow"
+            style={{ fontFamily: "'Quartz MS Std', 'Digital-7', monospace" }}
+          >
+            {currentTime}
+          </div>
+          <div className="text-[10px] md:text-xs font-medium text-slate-400 uppercase tracking-widest mt-1 whitespace-nowrap">{currentDate}</div>
+        </div>
       </div>
     </header>
   );

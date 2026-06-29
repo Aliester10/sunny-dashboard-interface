@@ -1,12 +1,14 @@
-
 import React from 'react';
-import { Card } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 interface LogEntry {
   timestamp: string;
-  event: string;
-  type: 'info' | 'warning' | 'error' | 'success';
-  value?: string;
+  power: string;
+  load: string;
+  voltage: string;
+  current: string;
+  battery: string;
 }
 
 interface LogTableProps {
@@ -14,65 +16,48 @@ interface LogTableProps {
 }
 
 const LogTable: React.FC<LogTableProps> = ({ logs }) => {
-  const getTypeStyles = (type: LogEntry['type']) => {
-    switch (type) {
-      case 'info':
-        return 'bg-blue-100 text-blue-800';
-      case 'warning':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'error':
-        return 'bg-red-100 text-red-800';
-      case 'success':
-        return 'bg-green-100 text-green-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
 
   return (
-    <Card className="p-4 animate-fade-in">
-      <h3 className="text-lg font-medium mb-4">System Logs</h3>
-      <div className="overflow-auto max-h-[300px] rounded-md border">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Time
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Event
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Type
-              </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Value
-              </th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {logs.map((log, index) => (
-              <tr key={index} className="hover:bg-gray-50">
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {log.timestamp}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                  {log.event}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getTypeStyles(log.type)}`}>
-                    {log.type}
-                  </span>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                  {log.value || '-'}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="p-6 h-full flex flex-col text-slate-300">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="font-bold text-lg text-white">Recent Records</h3>
+        <Link to="/logs" className="text-sm text-emerald-400 hover:text-emerald-300 transition-colors">
+          View all
+        </Link>
       </div>
-    </Card>
+      
+      <div className="space-y-3 overflow-y-auto custom-scrollbar flex-1 pr-2">
+        {logs.map((log, index) => (
+          <div 
+            key={index} 
+            className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex flex-col hover:bg-white/10 transition-colors animate-fade-in"
+            style={{ animationDelay: `${index * 100}ms` }}
+          >
+            <div className="flex justify-between items-center w-full mb-2">
+              <span className="text-xs text-slate-400 tracking-wide">{log.timestamp}</span>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold text-orange-400 border border-orange-500/20 bg-orange-500/10 px-1.5 py-0.5 rounded">L: {log.load}</span>
+                <span className="text-xs font-bold text-emerald-400 border border-emerald-500/20 bg-emerald-500/10 px-1.5 py-0.5 rounded">P: {log.power}</span>
+              </div>
+            </div>
+            <div className="flex justify-between items-center w-full text-xs">
+              <div className="flex flex-col">
+                <span className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Volt</span>
+                <span className="text-blue-300 font-medium">{log.voltage}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Amp</span>
+                <span className="text-purple-300 font-medium">{log.current}</span>
+              </div>
+              <div className="flex flex-col items-end">
+                <span className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Bat</span>
+                <span className="text-green-400 font-medium">{log.battery}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
+
 import {
   LineChart,
   Line,
@@ -33,8 +33,8 @@ const ChartDisplay: React.FC<ChartDisplayProps> = ({
   additionalDataKeys = [],
 }) => {
   return (
-    <Card className="p-4 h-full animate-fade-in">
-      <h3 className="text-lg font-medium mb-4">{title}</h3>
+    <div className="p-6 h-full animate-fade-in flex flex-col text-slate-300">
+      <h3 className="text-lg font-medium mb-6 text-slate-200 tracking-wide">{title}</h3>
       <div className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
           {type === "line" ? (
@@ -106,7 +106,7 @@ const ChartDisplay: React.FC<ChartDisplayProps> = ({
           )}
         </ResponsiveContainer>
       </div>
-    </Card>
+    </div>
   );
 };
 
